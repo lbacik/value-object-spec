@@ -51,4 +51,13 @@ class PersonSpec extends ObjectBehavior
             ->shouldThrow(ValueObjectException::class)
             ->during('set', ['otherName' => 'foo']);
     }
+
+    public function it_can_be_compared(): void
+    {
+        $person1 = new Person('Thor', 25);
+        $person2 = new Person(self::NAME, self::AGE);
+
+        $this->isEqual($person1)->shouldEqual(false);
+        $this->isEqual($person2)->shouldEqual(true);
+    }
 }

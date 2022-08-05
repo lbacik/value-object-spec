@@ -67,4 +67,11 @@ class PersonSpec extends ObjectBehavior
             ->shouldThrow(\Throwable::class)
             ->during('set', ['age' => 12]);
     }
+
+    public function its_name_is_not_too_short(): void
+    {
+        $this
+            ->shouldThrow(\Throwable::class)
+            ->during('set', ['name' => 'a']);
+    }
 }

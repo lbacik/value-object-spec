@@ -8,9 +8,12 @@ use Sushi\ValueObject;
 use Sushi\ValueObject\Exceptions\InvariantException;
 use Sushi\ValueObject\Invariant;
 
+use function PHPUnit\Framework\assertGreaterThanOrEqual;
+
 class Person extends ValueObject
 {
     private const MIN_AGE_IN_YEARS = 18;
+    private const NAME_MIN_LENGTH = 3;
 
     public function __construct(
         public readonly string $name,
@@ -27,5 +30,14 @@ class Person extends ValueObject
                 'The age is below ' . self::MIN_AGE_IN_YEARS
             );
         }
+    }
+
+    #[Invariant]
+    public function checkName(): void
+    {
+        assertGreaterThanOrEqual(
+            self::NAME_MIN_LENGTH,
+            mb_strlen($this->name)
+        );
     }
 }

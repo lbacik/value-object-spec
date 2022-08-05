@@ -7,8 +7,8 @@ namespace App;
 class Person
 {
     public function __construct(
-        public string $name,
-        public int $age,
+        public readonly string $name,
+        public readonly int $age,
     ) {
     }
 }

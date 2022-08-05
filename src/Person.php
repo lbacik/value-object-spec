@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App;
 
-class Person
+use Sushi\ValueObject;
+
+class Person extends ValueObject
 {
     public function __construct(
         public readonly string $name,

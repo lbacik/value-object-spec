@@ -6,6 +6,7 @@ namespace spec\App;
 
 use App\Person;
 use PhpSpec\ObjectBehavior;
+use Sushi\ValueObject\Exceptions\ValueObjectException;
 
 class PersonSpec extends ObjectBehavior
 {
@@ -42,5 +43,12 @@ class PersonSpec extends ObjectBehavior
         $newPerson = $this->set(age: 40);
         $newPerson->age->shouldEqual(40);
         $this->age->shouldEqual(self::AGE);
+    }
+
+    public function it_has_the_same_keys(): void
+    {
+        $this
+            ->shouldThrow(ValueObjectException::class)
+            ->during('set', ['otherName' => 'foo']);
     }
 }

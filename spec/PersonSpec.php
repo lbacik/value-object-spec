@@ -21,4 +21,10 @@ class PersonSpec extends ObjectBehavior
     {
         $this->shouldHaveType(Person::class);
     }
+
+    public function it_contains_data(): void
+    {
+        $this->name->shouldEqual(self::NAME);
+        $this->age->shouldEqual(self::AGE);
+    }
 }

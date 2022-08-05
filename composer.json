@@ -9,6 +9,7 @@
         }
     },
     "require": {
-        "lbacik/value-object": "^1.0"
+        "lbacik/value-object": "^1.0",
+        "phpunit/phpunit": "^9.5"
     }
 }

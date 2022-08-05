@@ -60,4 +60,11 @@ class PersonSpec extends ObjectBehavior
         $this->isEqual($person1)->shouldEqual(false);
         $this->isEqual($person2)->shouldEqual(true);
     }
+
+    public function it_is_an_adult_person(): void
+    {
+        $this
+            ->shouldThrow(\Throwable::class)
+            ->during('set', ['age' => 12]);
+    }
 }

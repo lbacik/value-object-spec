@@ -36,4 +36,11 @@ class PersonSpec extends ObjectBehavior
         }
         $this->name->shouldEqual(self::NAME);
     }
+
+    public function it_has_set_method(): void
+    {
+        $newPerson = $this->set(age: 40);
+        $newPerson->age->shouldEqual(40);
+        $this->age->shouldEqual(self::AGE);
+    }
 }
